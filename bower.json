@@ -1,0 +1,21 @@
+{
+  "name": "yt-webcomponents",
+  "homepage": "https://github.com/hebertpazian/webcomponents",
+  "authors": [
+    "Hebert Pazian <hebertpazian@hotmail.com>"
+  ],
+  "description": "",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^1.7.1",
+    "font-awesome": "^4.7.0"
+  }
+}

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+
+    <title>Test of YT WebComponents</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link rel="import" href="./yt-components/elements.html">
+</head>
+
+<body>
+    <main class="container">
+        <a class='open-modal' href="#m1">Abrir modal</a></p>
+        <br>
+        <hr><br>
+
+        <a is="a-yttooltip" dir="top" title="Tooltip top" href="javascript:;">Tootip top</a> |
+        <a is="a-yttooltip" dir="right" title="Tooltip right" href="javascript:;">Tootip right</a> |
+        <a is="a-yttooltip" dir="left" title="Tooltip left" href="javascript:;">Tootip left</a> |
+        <a is="a-yttooltip" dir="bottom" title="Tooltip bottom" href="javascript:;">Tootip bottom</a>
+        <br>
+        <hr><br>
+
+        <input type="text" is="input-yttooltip" dir="top" title="Tooltip top" placeholder="Input" />
+        <button is="button-yttooltip" dir="right" title="Tooltip right">Button</button>
+
+        <br>
+        <hr><br>
+
+        <a id="p1" href="javascript:;">Popover top</a> |
+        <a id="p2" href="javascript:;">Popover right</a> |
+        <a id="p3" href="javascript:;">Popover left</a> |
+        <a id="p4" href="javascript:;">Popover bottom</a>
+        <yt-popover target="#p1" dir="top">
+            <h3>Popover top</h3><p>Um popover directed to top</p>
+        </yt-popover>
+        <yt-popover target="#p2" dir="right">
+            <h3>Popover right</h3><p>Um popover directed to right</p>
+        </yt-popover>
+        <yt-popover target="#p3" dir="left">
+            <h3>Popover left</h3><p>Um popover directed to left</p>
+        </yt-popover>
+        <yt-popover target="#p4" dir="bottom">
+            <h3>Popover bottom</h3><p>Um popover directed to bottom</p>
+        </yt-popover>
+
+        <br>
+        <hr><br>
+
+        <yt-tabpanel>
+            <yt-tab active>
+                <header>
+                    Tab 1
+                </header>
+                <main>
+                    <h2>Tab 1</h2>
+                    <p>Content of tab panel</p>
+                </main>
+            </yt-tab>
+            <yt-tab>
+                <header>
+                    Tab 2
+                </header>
+                <main>
+                    <h2>Tab 2</h2>
+                    <p>Content of tab panel</p>
+                </main>
+            </yt-tab>
+            <yt-tab>
+                <header>
+                    Tab 3
+                </header>
+                <main>
+                    <h2>Tab 3</h2>
+                    <p>Content of tab panel</p>
+                </main>
+            </yt-tab>
+        </yt-tabpanel>
+    </main>
+    <yt-modal id="m1" backdrop allow-scroll>
+        <header>
+            <a href="#" class="pull-right modal-close">x</a>
+            <h3>Modal Header</h3>
+        </header>
+        <main>
+            <table-fa-icons icon-size="2x" cols="7" />
+        </main>
+        <footer>
+            <button class="btn btn-confirm" type="button">Confirmar</button>
+            <button class="btn btn-cancel modal-close" type="button">Cancelar</button>
+        </footer>
+    </yt-modal>
+</body>
+
+</html>

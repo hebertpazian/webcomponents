@@ -1,0 +1,126 @@
+<dom-module id="yt-popover">
+    <template>
+    <style>
+        :host {
+            position: absolute;
+            right: 0;
+            display: none;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
+    <content></content>
+</template>
+    <script>
+        Polymer({
+            is: 'yt-popover',
+            properties: {
+                target: String,
+                dir: String,
+            },
+            bindStyles: function(elem, styles) {
+                for (var key in styles) elem.style[key] = styles[key];
+            },
+            create: function() {
+                this.elem = document.createElement('yt-popover-box');
+                this.elem.classList.add("yt-popover");
+                document.body.appendChild(this.elem);
+            },
+            getPosition: function() {
+                var contentRect = this.targetElem.getBoundingClientRect();
+
+                this.elem.style.display = 'block';
+                var elemRect = this.elem.getBoundingClientRect();
+
+                var position = {};
+                switch (this.dir || this.getAttribute("dir")) {
+                    case "top":
+                        position = {
+                            top: `${contentRect.top - elemRect.height}px`,
+                            left: `${(contentRect.left + (contentRect.width / 2)) - (elemRect.width / 2)}px`
+                        }
+                        break;
+                    case "bottom":
+                        position = {
+                            top: `${contentRect.top + elemRect.height}px`,
+                            left: `${(contentRect.left + (contentRect.width / 2)) - (elemRect.width / 2)}px`
+                        }
+                        break;
+                    case "left":
+                        position = {
+                            top: `${contentRect.top}px`,
+                            left: `${(contentRect.left - elemRect.width)}px`
+                        }
+                        break;
+                    case "right":
+                        position = {
+                            top: `${contentRect.top}px`,
+                            left: `${(contentRect.left + contentRect.width)}px`
+                        }
+                        break;
+                };
+
+                return position;
+            },
+            show: function() {
+                var styles = this.getPosition();
+                this.bindStyles(this.elem, styles);
+                this.elem.classList.add('in');
+            },
+            hide: function() {
+                var styles = this.getPosition();
+                this.bindStyles(this.elem, styles);
+                this.elem.classList.remove('in');
+            },
+            ready: function() {
+                var self = this;
+                self.create();
+                this.targetElem = document.querySelector(this.target);
+
+                this.getContentChildren('content').forEach(content => {
+                    self.elem.appendChild(content);
+                });
+
+                this.targetElem.addEventListener('mouseenter', function() {
+                    self.show();
+                });
+                this.targetElem.addEventListener('mouseout', function() {
+                    self.hide();
+                });
+            }
+        });
+    </script>
+</dom-module>
+
+<dom-module id="yt-popover-box">
+    <template>
+    <style>
+        :host {
+            position: absolute;
+            padding: 5px;
+            display: none;
+            visibility: hidden;
+            opacity: 0;
+        }
+
+        :host.in {
+            opacity: 1;
+            display: block;
+            visibility: visible;
+            transition: opacity .3s ease-in-out;
+        }
+    </style>
+
+    <aside>
+        <content></content>
+    </aside>
+</template>
+
+    <script>
+        Polymer({
+            is: "yt-popover-box",
+            properties: {},
+            ready: function() {}
+        });
+    </script>
+</dom-module>

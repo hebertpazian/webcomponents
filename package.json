@@ -1,0 +1,27 @@
+{
+  "name": "webcomponents",
+  "version": "1.0.0",
+  "description": "simple webcomponents",
+  "main": "",
+  "scripts": {
+    "start": "lite-server",
+    "postinstall": "bower install"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hebertpazian/webcomponents.git"
+  },
+  "keywords": [
+    "webcomponents",
+    "polymer"
+  ],
+  "author": "Hebert Pazian <hebertpazian@hotmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/hebertpazian/webcomponents/issues"
+  },
+  "homepage": "https://github.com/hebertpazian/webcomponents#readme",
+  "devDependencies": {
+    "lite-server": "^2.2.2"
+  }
+}

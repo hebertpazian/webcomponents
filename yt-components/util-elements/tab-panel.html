@@ -1,0 +1,44 @@
+<dom-module id="yt-tabpanel">
+    <template>
+    <style>
+    </style>
+
+    <div class="yt-tabpanel">
+        <content></content>
+    </div>
+</template>
+    <script>
+        Polymer({
+            is: "yt-tabpanel",
+            properties: {},
+            ready: function() {
+                var self = this;
+                this.getContentChildren('content').forEach(content =>
+                    content.style.display = 'none'
+                );
+            }
+        });
+    </script>
+</dom-module>
+
+<dom-module id="yt-tab">
+    <template>
+    <style>
+    </style>
+
+    <section class="yt-tab">
+        <content></content>
+    </section>
+</template>
+
+    <script>
+        Polymer({
+            is: "yt-tab",
+            properties: {},
+            ready: function() {
+                var self = this;
+
+            }
+        });
+    </script>
+</dom-module>
