@@ -1,23 +1,33 @@
-<dom-module id="elem-yttooltip">
+<dom-module id="wc-popover">
     <template>
+    <style>
+        :host {
+            position: absolute;
+            right: 0;
+            display: none;
+            z-index: -1;
+            pointer-events: none;
+        }
+    </style>
     <content></content>
 </template>
     <script>
-        var options = {
+        Polymer({
+            is: 'wc-popover',
             properties: {
-                title: String,
+                target: String,
                 dir: String,
             },
             bindStyles: function(elem, styles) {
                 for (var key in styles) elem.style[key] = styles[key];
             },
             create: function() {
-                this.elem = document.createElement('yt-tooltip');
-                this.elem.classList.add("yt-tooltip");
+                this.elem = document.createElement('wc-popover-box');
+                this.elem.classList.add("wc-popover");
                 document.body.appendChild(this.elem);
             },
             getPosition: function() {
-                var contentRect = this.getBoundingClientRect();
+                var contentRect = this.targetElem.getBoundingClientRect();
 
                 this.elem.style.display = 'block';
                 var elemRect = this.elem.getBoundingClientRect();
@@ -65,32 +75,24 @@
             ready: function() {
                 var self = this;
                 self.create();
-                self.elem.innerText = this.title;
+                this.targetElem = document.querySelector(this.target);
 
-                this.addEventListener('mouseenter', function() {
+                this.getContentChildren('content').forEach(content => {
+                    self.elem.appendChild(content);
+                });
+
+                this.targetElem.addEventListener('mouseenter', function() {
                     self.show();
                 });
-                this.addEventListener('mouseout', function() {
+                this.targetElem.addEventListener('mouseout', function() {
                     self.hide();
                 });
             }
-        };
-
-        function createTooltip(is, exts) {
-            var opts = Object.assign({}, options);
-            opts.is = is;
-            opts.extends = exts;
-            Polymer(opts);
-        }
-
-        createTooltip('a-yttooltip', 'a');
-        createTooltip('button-yttooltip', 'button');
-        createTooltip('input-yttooltip', 'input');
-        createTooltip('div-yttooltip', 'div');
+        });
     </script>
 </dom-module>
 
-<dom-module id="yt-tooltip">
+<dom-module id="wc-popover-box">
     <template>
     <style>
         :host {
@@ -116,7 +118,7 @@
 
     <script>
         Polymer({
-            is: "yt-tooltip",
+            is: "wc-popover-box",
             properties: {},
             ready: function() {}
         });

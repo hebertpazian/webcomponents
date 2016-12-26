@@ -1,4 +1,4 @@
-<dom-module id="yt-modal">
+<dom-module id="wc-modal">
     <template>
     <style>
       :host {
@@ -64,10 +64,10 @@
     <script>
         window.addEventListener('load', function() {
             if (window.location.hash)
-                document.querySelector(`yt-modal[id=${window.location.hash.substring(1)}]`).open();
+                document.querySelector(`wc-modal[id=${window.location.hash.substring(1)}]`).open();
             document.querySelectorAll('.open-modal').forEach(e =>
                 e.addEventListener('click', function() {
-                    let modal = document.querySelector(`yt-modal[id=${e.hash.substring(1)}]`);
+                    let modal = document.querySelector(`wc-modal[id=${e.hash.substring(1)}]`);
                     modal.addEventListener('close', () => window.location.hash = '');
                     modal.open();
                 }));
@@ -76,7 +76,7 @@
 
     <script>
         Polymer({
-            is: "yt-modal",
+            is: "wc-modal",
             properties: {
                 backdrop: Boolean,
                 allowScroll: Boolean,
