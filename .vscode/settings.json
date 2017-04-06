@@ -4,13 +4,8 @@
         "**/.git": true,
         "**/node_modules": true,
         "**/bower_components": true,
-        "**/typings": true,
-        "**/npm-debug.log": true,
-        "web/**/*.js": {
-            "when": "$(basename).ts"
-        },
-        "web/**/*.js.map": {
-            "when": "$(basename)"
-        }
+        "service-worker.js": true,
+        "sw-precache-config.js": true,
+        ".eslintrc.json": true
     }
 }

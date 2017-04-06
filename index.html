@@ -1,99 +1,80 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
 
-<head>
-    <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="generator" content="Polymer Starter Kit">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>Test of wc WebComponents</title>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>My App</title>
+    <meta name="description" content="My App description">
 
+    <link rel="icon" href="/images/favicon.ico">
 
-    <link rel="import" href="wc-components/elements.html">
-</head>
+    <!-- See https://goo.gl/OOhYW5 -->
+    <link rel="manifest" href="/manifest.json">
 
-<body>
-    <main class="container">
-        <a class='open-modal' href="#m1">Abrir modal</a></p>
-        <br>
-        <hr><br>
+    <!-- See https://goo.gl/qRE0vM -->
+    <meta name="theme-color" content="#3f51b5">
 
-        <a is="a-wctooltip" dir="top" title="Tooltip top" href="javascript:;">Tootip top</a> |
-        <a is="a-wctooltip" dir="right" title="Tooltip right" href="javascript:;">Tootip right</a> |
-        <a is="a-wctooltip" dir="left" title="Tooltip left" href="javascript:;">Tootip left</a> |
-        <a is="a-wctooltip" dir="bottom" title="Tooltip bottom" href="javascript:;">Tootip bottom</a>
-        <br>
-        <hr><br>
+    <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="application-name" content="My App">
 
-        <input type="text" is="input-wctooltip" dir="top" title="Tooltip top" placeholder="Input" />
-        <button is="button-wctooltip" dir="right" title="Tooltip right">Button</button>
+    <!-- Add to homescreen for Safari on iOS -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="My App">
 
-        <br>
-        <hr><br>
+    <!-- Homescreen icons -->
+    <link rel="apple-touch-icon" href="/images/manifest/icon-48x48.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/images/manifest/icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="96x96" href="/images/manifest/icon-96x96.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/images/manifest/icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="192x192" href="/images/manifest/icon-192x192.png">
 
-        <a id="p1" href="javascript:;">Popover top</a> |
-        <a id="p2" href="javascript:;">Popover right</a> |
-        <a id="p3" href="javascript:;">Popover left</a> |
-        <a id="p4" href="javascript:;">Popover bottom</a>
-        <wc-popover target="#p1" dir="top">
-            <h3>Popover top</h3><p>Um popover directed to top</p>
-        </wc-popover>
-        <wc-popover target="#p2" dir="right">
-            <h3>Popover right</h3><p>Um popover directed to right</p>
-        </wc-popover>
-        <wc-popover target="#p3" dir="left">
-            <h3>Popover left</h3><p>Um popover directed to left</p>
-        </wc-popover>
-        <wc-popover target="#p4" dir="bottom">
-            <h3>Popover bottom</h3><p>Um popover directed to bottom</p>
-        </wc-popover>
+    <!-- Tile icon for Windows 8 (144x144 + tile color) -->
+    <meta name="msapplication-TileImage" content="/images/manifest/icon-144x144.png">
+    <meta name="msapplication-TileColor" content="#3f51b5">
+    <meta name="msapplication-tap-highlight" content="no">
 
-        <br>
-        <hr><br>
+    <!-- Load and register pre-caching Service Worker -->
+    <script>
+      if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function() {
+          navigator.serviceWorker.register('/service-worker.js');
+        });
+      }
+    </script>
 
-        <wc-tabpanel>
-            <wc-tab active>
-                <header>
-                    Tab 1
-                </header>
-                <main>
-                    <h2>Tab 1</h2>
-                    <p>Content of tab panel</p>
-                </main>
-            </wc-tab>
-            <wc-tab>
-                <header>
-                    Tab 2
-                </header>
-                <main>
-                    <h2>Tab 2</h2>
-                    <p>Content of tab panel</p>
-                </main>
-            </wc-tab>
-            <wc-tab>
-                <header>
-                    Tab 3
-                </header>
-                <main>
-                    <h2>Tab 3</h2>
-                    <p>Content of tab panel</p>
-                </main>
-            </wc-tab>
-        </wc-tabpanel>
-    </main>
-    <wc-modal id="m1" backdrop allow-scroll>
-        <header>
-            <a href="#" class="pull-right modal-close">x</a>
-            <h3>Modal Header</h3>
-        </header>
-        <main>
-            <table-fa-icons icon-size="2x" cols="7" />
-        </main>
-        <footer>
-            <button class="btn btn-confirm" type="button">Confirmar</button>
-            <button class="btn btn-cancel modal-close" type="button">Cancelar</button>
-        </footer>
-    </wc-modal>
-</body>
+    <!-- Load webcomponents-loader.js to check and load any polyfills your browser needs -->
+    <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
 
+    <!-- Load your application shell -->
+    <link rel="import" href="/src/my-app.html">
+
+    <!-- Add any global styles for body, document, etc. -->
+    <style>
+      body {
+        margin: 0;
+        font-family: 'Roboto', 'Noto', sans-serif;
+        line-height: 1.5;
+        min-height: 100vh;
+        background-color: #eeeeee;
+      }
+    </style>
+  </head>
+  <body>
+    <my-app></my-app>
+    <!-- Built with love using Polymer Starter Kit -->
+  </body>
 </html>

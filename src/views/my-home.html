@@ -1,0 +1,25 @@
+<link rel="import" href="../bower_components/polymer/polymer.html">
+
+<dom-module id="my-home">
+    <!-- Defines the element's style and local DOM -->
+    <template>
+    <style>
+      :host {
+        display: block;
+        padding: 16px;
+        text-align: center;
+      }
+    </style>
+
+    <h1>WELCOME!</h1>
+  </template>
+    <!-- Creates the element's prototype and registers it -->
+    <script>
+        class MyHome extends Polymer.Element {
+            static get is() {
+                return 'my-home';
+            }
+        }
+        customElements.define(MyHome.is, MyHome);
+    </script>
+</dom-module>
